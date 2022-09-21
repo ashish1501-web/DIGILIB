@@ -1,18 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Validation\Rule;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Categorie;
 use App\Models\reviews;
+use App\Models\User;
 use App\Models\favourite;
 
 class CategoriesController extends Controller
 {
     public function index()
     {   
-        $examples=Book::all();
+        $examples=Book::orderBy('id','DESC')->get();
+         
         $cat=Categorie::all();
         return view('categories',compact('examples','cat'));
     }
@@ -21,9 +24,10 @@ class CategoriesController extends Controller
     {
         $book=Book::find($id);
         $b2=Book::all();
-        $comments=reviews::all();
+        $comments=reviews::orderBy('id','DESC')->get();
+        $users=User::all();
         // dd($comments);
-        return view('show_book',compact('book','b2','comments'));
+        return view('show_book',compact('book','b2','comments','users'));
     }
 
     public function store(Request $request)
@@ -34,17 +38,27 @@ class CategoriesController extends Controller
         
         
       
-
+        // dd($request->submit);
         if($request->submit=='2'){
             reviews::create($request->all());
             return redirect()->route('book.show',['id'=>$request->bookId]);
         }
         else{
             $request->validate([
-                'bookId'=>'unique:favourites,bookId,NULL,userId,Auth::user()->id',
+                'userId'=>'required',
+                'bookId'=>['required',
+                Rule::unique('favourites')->where(function ($query) use ($request) {
+
+                    return $query
+                        ->where('bookId',$request->bookId)
+                        ->where('userId',$request->userId);
+                }),
+            ],
             ]);
+            
+               
             $fav=favourite::create($request->all());
-            return redirect()->route('book.show',['id'=>$request->bookId]);
+            return redirect()->route('book.show',['id'=>$request->bookId])->with("Successfully added");
         }
     }
    

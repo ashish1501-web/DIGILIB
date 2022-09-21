@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminBlogsController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\userprofileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,9 +51,32 @@ Route::post('/admin/add_books',[AdminBooksController::class,'store'])->name('add
 Route::get('/admin/add_categories',[AdminCatController::class,'add_categories'])->name('addCategory');
 Route::post('/admin/add_categories',[AdminCatController::class,'store'])->name('addCategory.store');
 Route::get('/admin/add_blogs',[AdminBlogsController::class,'add_blogs'])->name('addBlogs');
+
+Route::get('admin/usersControl',[AdminUsersController::class,'showUsers'])->name('showUsers');
+Route::get('admin/usersControl/{id}',[AdminUsersController::class,'delete'])->name('deleteUser');
+// Route::get('admin/usersControl',[AdminUsersController::class,'showUsers'])->name('edit');
+//user edit
+Route::get('admin/usersedit/{id}',[AdminUsersController::class,'edit'])->name('editUser');
+Route::put('admin/usersedit{id}',[AdminUsersController::class,'update'])->name('updateUser');
+//book edit
+
+Route::get('/admin/booksTable/',[AdminBooksController::class,'showBooks'])->name('showBooksTable');
+Route::get('/admin/booksTable/{id}',[AdminBooksController::class,'delete'])->name('deleteBook');
+Route::get('/admin/booksedit/{id}',[AdminBooksController::class,'edit'])->name('editBook');
+Route::put('/admin/booksedit/{id}',[AdminBooksController::class,'update'])->name('updateBook');
+
+//blogs
 Route::post('/admin/add_blogs',[AdminBlogsController::class,'store'])->name('addBlogs.store');
 Route::get('/admin/blogsTable',[AdminBlogsController::class,'showBlogs'])->name('showBlogs');
-Route::get('admin/usersControl',[AdminUsersController::class,'showUsers'])->name('showUsers');
+//Route::get('/admin/blogsTable',[AdminBlogsController::class,'showBlogs'])->name('showBlogs');
+Route::get('/admin/blogsTable/{id}',[AdminBlogsController::class,'delete'])->name('deleteBlog');
+Route::get('/admin/blogsedit/{id}',[AdminBlogsController::class,'edit'])->name('editBlog');
+Route::put('/admin/blogsedit/{id}',[AdminBlogsController::class,'update'])->name('updateBlog');
+
+//profile of user
+Route::get('userProfile',[userprofileController::class,'index'])->name('userProfile');
+Route::get('userProfile/edit',[userprofileController::class,'edit'])->name('edituserProfile');
+Route::put('userProfile',[userprofileController::class,'update'])->name('updateuserProfile');
 
 
 //showbook add reviews
@@ -71,7 +95,7 @@ Route::get('/contact',function(){
 
 //books table show
 
-Route::get('/admin/booksTable',[AdminBooksController::class,'showBooks'])->name('showBooksTable');
+
 
 
 

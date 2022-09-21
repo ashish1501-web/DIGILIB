@@ -32,4 +32,5 @@ class RegisterController extends Controller
         // User::create($request->all());
         return redirect()->route('login');
     }
+   
 }

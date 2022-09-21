@@ -20,10 +20,10 @@ return new class extends Migration
            
             $table->string('publisher');
             $table->longtext('description');
-            $table->string('book_image')->default('zV8UuoQf9NPdFPk8R6Qf65CImqNbp5Rh2lLZnvou.png');
+            $table->string('book_image');
             $table->Integer('pages');
             $table->foreignId('category')->reference('id')->on('categories')->onDelete('cascade');
-            $table->string('book_file')->default('EQposyojE3wZrxTt6ZmgXxXuOENKtDYjzLORI5SF.pdf');
+            $table->string('book_file');
             $table->enum('statuscheck',['active','inactive'])->default('active');
 
             $table->timestamps();

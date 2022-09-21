@@ -23,6 +23,7 @@
                           <th>Registered_on</th>
                           
                           <th>Edit</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -42,53 +43,11 @@
                          
                           
                           
-                          <td><button>Edit</button></td>
+                          <td><button> <a href="{{route('editUser',['id'=>$book->id])}}">Edit</a> </button></td>
+                          <td><button> <a href="{{route('deleteUser',['id'=>$book->id])}}">Delete</a> </button></td>
                         </tr>
                         @endforeach
-                        <tr>
-                          <td>2</td>
-                          <td>Book2</td>
-                          <td>Author2</td>
-                          <td>1234</td>
-                          <td>Publication2</td>
-                          <td>sadfghasdfgh</td>
-                          <td>Physics</td>
-                          <td>Visible</td>
-                          <td><button>Edit</button></td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Book3</td>
-                          <td>Author3</td>
-                          <td>1234</td>
-                          <td>Publication3</td>
-                          <td>sadfghasdfgh</td>
-                          <td>Chemistry</td>
-                          <td>Visible</td>
-                          <td><button>Edit</button></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Book4</td>
-                          <td>Author4</td>
-                          <td>1234</td>
-                          <td>Publication4</td>
-                          <td>sadfghasdfgh</td>
-                          <td>Comics</td>
-                          <td>Hidden</td>
-                          <td><button>Edit</button></td>
-                        </tr>
-                        <tr>
-                          <td>5</td>
-                          <td>Book5</td>
-                          <td>Author5</td>
-                          <td>1234</td>
-                          <td>Publication5</td>
-                          <td>sadfghasdfgh</td>
-                          <td>Computer Science</td>
-                          <td>Visible</td>
-                          <td><button>Edit</button></td>
-                        </tr>
+                        
                       </tbody>
                     </table>
                   </div>

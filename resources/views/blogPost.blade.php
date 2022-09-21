@@ -14,8 +14,10 @@
     <title>digiLib | Blog</title>
 </head>
 <body class="blog-bdy">
-
-   @include('layouts.navbar')
+    @php
+        $page="blog";
+    @endphp
+    @include('layouts.navbar')
 
     <div class="container blog-post">
         <h1>Innovative Digilab</h1>

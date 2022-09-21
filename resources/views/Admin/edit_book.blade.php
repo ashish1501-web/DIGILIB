@@ -1,6 +1,28 @@
-@extends('layouts.adminHeader')
-@section('content')
-      <div class="main-panel">        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>    
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{asset('assets/images/favicon (1).ico')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="{{asset('assets/style.css')}}">
+    <title>digiLib | Library Card</title>
+</head>
+<style>
+  /* body{
+    /* background-image: url({{asset('assets/images/lib_card_back.jpg')}}); */
+    background-size: cover;
+    background-attachment: fixed;
+  } */
+</style>
+
+
+    <div class="main-panel">        
         <div class="content-wrapper">
           <div class="row">
             <div class="col-md-3"></div>
@@ -11,56 +33,39 @@
                   <p class="card-description">
                     Enter the book details
                   </p>
-                  <form action="{{route('addBooks.store')}}" method="post" class="forms-sample" enctype="multipart/form-data">
+                  <form action="{{route('updateBook',['id'=>$book->id])}}" method="post" class="forms-sample" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                       <label for="exampleInputUsername1">Name</label>
-                      <input type="text" name="book_name" class="form-control" id="exampleInputUsername1" placeholder="Book Name"  required>
-                      @error ('book_name')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                     @enderror
+                      <input type="text" name="book_name" class="form-control" id="exampleInputUsername1" value="{{$book->book_name}}" placeholder="Book Name">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputauthor">Author</label>
-                      <input type="text"name="author_name" class="form-control" id="exampleInputEmail1" placeholder="Author" required>
-                      @error ('author_name')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                     @enderror
+                      <input type="text"name="author_name" class="form-control" id="exampleInputEmail1" value="{{$book->author_name}}" placeholder="Author">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputpublisher">Publication</label>
-                      <input type="text" name="publisher" class="form-control" id="exampleInputEmail1" placeholder="Book Publisher"  required>
-                      @error ('publisher')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                     @enderror
+                      <input type="text" name="publisher" class="form-control" id="exampleInputEmail1" value="{{$book->publisher}}" placeholder="Book Publisher">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputdescription">Book Details</label>
-                      <input type="text" name="description" class="form-control" id="exampleInputEmail1" placeholder="Details"  required >
-                      @error ('description')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                     @enderror
+                      <input type="text" name="description" class="form-control" id="exampleInputEmail1" value="{{$book->description}}" placeholder="Details">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="exampleInputimage">Image</label>
-                      <input type="file" name="book_image" class="form-control" id="exampleInputPassword1" placeholder="Image"  required>
-                      @error ('book_image')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                     @enderror
-                    </div>
+                      <input type="file" name="book_image" class="form-control" id="exampleInputPassword1" value="{{$book->book_image}}" placeholder="Image">
+                    </div> -->
                     <div class="form-group">
                       <label for="exampleInputpages">Number of Pages</label>
-                      <input type="number" name="pages" class="form-control" id="exampleInputConfirmPassword1" placeholder="Pages"  required>
-                      @error ('pages')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                     @enderror
+                      <input type="number" name="pages" class="form-control" id="exampleInputConfirmPassword1" value="{{$book->pages}}" placeholder="Pages">
                     </div>
                     
                     
                     <div class="form-group">
                       <label for="exampleInputcategory">Category</label>
                       <!-- <input type="text" name="category" class="form-control" id="exampleInputEmail1" placeholder="Category"> -->
-                      <select name="category" id=""  required>
+                      <select name="category" value="{{$book->category}}" id="">
                           @foreach($cat as $c)
                             <option value="{{$c->id}}">{{$c->category_name}}</option>
                           @endforeach
@@ -77,13 +82,11 @@
                         </span>
                       </div>
                     </div> -->
-                    <div>
-                    <label>File upload</label>
-                      <input type="file" name="book_file" class="file-upload-default"  required>
-                      @error ('book_file')
-                              <div class="alert alert-danger">{{ $message }}</div>
-                     @enderror
-                    </div>
+                    <!-- <div> -->
+                    <!-- <label>File upload</label>
+                      <input type="file" name="book_file" value="{{$book->book_file}}" class="file-upload-default">
+                      
+                    </div> -->
                     <!-- <label class="form-check-label">Status</label>
                     <div class="row">
                       <div class="col-md-1"></div>
@@ -101,8 +104,10 @@
                       </div>
                     </div> -->
                     <!-- <input type="hidden" value='active' name='statuscheck'> -->
-                    <button type="submit" class="btn btn-primary me-2">Add Book</button>
+                    <button type="submit" class="btn btn-primary me-2">Update</button>
                     <button class="btn btn-light">Cancel</button>
+  
+  </div>
                   </form>
                 </div>
               </div>
@@ -113,4 +118,5 @@
         
       </div>
 
-@endsection
+
+    

@@ -45,7 +45,8 @@ class LoginController extends Controller
     }
     // Admin dashboard
     public function AdminDashboard()
-    {
-        return view('AdminDashboard');
+    {   $book=Auth::user();
+        // dd($book);
+        return view('AdminDashboard',compact('book'));
     }
 }

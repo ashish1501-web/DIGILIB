@@ -15,7 +15,7 @@
                   <div class="dropdown">
                       <a href="{{route('categories.index')}}" class="nav-link {{ $page === 'categories'  ? 'lactive' : ''}}" id="categories">
                       Categories<span class="caret"></span></a>
-                      <div class="drp-dwn">
+                      <!-- <div class="drp-dwn">
                           <div class="drp-dwn-clm">
                               <ul class="dropdown-menu">
                                 <li><a href="{{route('categories.index')}}#maths">Mathematics</a></li>
@@ -27,7 +27,7 @@
                                 <li><a href="{{route('categories.index')}}#civil">Civil Engineering</a></li>
                               </ul>
                           </div>
-                      </div>
+                      </div> -->
                   </div>
               </div>
               <div class="adiv"><a href="{{route('register')}}" class="nav-link {{ $page === 'librarycard'  ? 'lactive' : ''}}" id="card">Library Card</a></div>
@@ -52,14 +52,16 @@
             <div class="dropdown">
   
               <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="subscribe-btn" type="button">
-                  <span class="glyphicon glyphicon-user" id="user-dp"></span>
+                  <span class="" id="user-dp">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" height="40" width="40" alt="">
+                  </span>
               </button>                    
   
               <ul class="dropdown-menu" id="user-drpdwn">
                   <li class="dropdown-header"></li>
-                  <li><a href="#">My profile <span class="glyphicon glyphicon-user"></span></a></li>
+                  <li><a href="{{route('userProfile')}}"> My profile <span class="glyphicon glyphicon-user"></span></a></li>
                   
-                  <li><a href="{{route('logout')}}">Log Out &nbsp; <span class="glyphicon glyphicon-log-out"></span></a></li>
+                  <li><a href="{{route('logout')}}"> Log Out &nbsp; <span class="glyphicon glyphicon-log-out"></span></a></li>
                       
               </ul>
           </div> 

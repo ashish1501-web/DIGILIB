@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Spline+Sans&display=swap" rel="stylesheet">
     <link rel="icon" href="{{asset('assets/images/favicon (1).ico')}}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Martel+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap" rel="stylesheet">
@@ -127,7 +127,7 @@
         </div>
     </div>
 
-    <div class="book-numbers">
+    <!-- <div class="book-numbers">
         <div class="row">
             <div></div>
             <div style=" width: 10.9vw;" class=" info" align="center"><font size="10">72</font> <br> Mathematics Books</div>  
@@ -137,7 +137,7 @@
             <div style=" width: 10vw;" class=" info" align="center"><font size="10">8</font> <br> Blog Posts</div>
             <div></div>
         </div>
-    </div>
+    </div> -->
 
     <div class="subscription">
         <p class="subscrb_h">Subscription</p>
@@ -198,7 +198,9 @@
     <div class="join-us">
         <div class="top-line join-us-text">
             COME JOIN US AND BECOME <br> ONE AMONG US <br>
+            @if(!Auth::check())
             <a class="join-us-btn" href="{{route('register')}}" id="join-btn">Join Us</a>
+            @endif
         </div>
         <div class="group-study"><img src="{{asset('assets/images/group-study.jpg')}}" alt=""></div>
     </div>
