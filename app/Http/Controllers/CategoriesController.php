@@ -6,7 +6,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Categorie;
-use App\Models\reviews;
+use App\Models\review;
 use App\Models\User;
 use App\Models\favourite;
 
@@ -24,7 +24,7 @@ class CategoriesController extends Controller
     {
         $book=Book::find($id);
         $b2=Book::all();
-        $comments=reviews::orderBy('id','DESC')->get();
+        $comments=review::orderBy('id','DESC')->get();
         $users=User::all();
         // dd($comments);
         return view('show_book',compact('book','b2','comments','users'));
@@ -38,9 +38,9 @@ class CategoriesController extends Controller
         
         
       
-        // dd($request->submit);
+        // dd($request->comment);
         if($request->submit=='2'){
-            reviews::create($request->all());
+            review::create($request->all());
             return redirect()->route('book.show',['id'=>$request->bookId]);
         }
         else{

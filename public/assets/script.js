@@ -7,9 +7,13 @@ let signNumber = document.getElementById('signupNumber')
 let signPassword = document.getElementById('signupPassword')
 let signCPassword = document.getElementById('signupCPassword')
 
+
+
 let successMsg = document.getElementById('form-success')
 let error = document.getElementById('form-error')
 let errorMsg = document.getElementById('err-msg')
+
+
 
 if (form) {
 

@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class reviews extends Model
+class review extends Model
 {
     use HasFactory;
-
     protected $primarykey=['userId','bookId'];
     protected $fillable = [
         'userId',
         'bookId',
         'comment',
     ];
-
 }

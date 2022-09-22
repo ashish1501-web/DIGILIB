@@ -37,16 +37,25 @@
                     @method('PUT')
                     <div class="form-group">
                       <label for="exampleInputUsername1">Name</label>
-                      <input type="text" name="blog_name" class="form-control" value="{{$blog->blog_name}}" id="exampleInputUsername1" placeholder="Blog Name">
+                      <input type="text" name="blog_name" class="form-control" value="{{$blog->blog_name}}" id="exampleInputUsername1" placeholder="Blog Name" required>
+                      @error ('blog_name')
+            <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
                     </div>
                     <div class="form-group">
                       <label for="exampleInputUsername1">Date</label>
-                      <input type="date" name="date" class="form-control" id="exampleInputUsername1" value="{{$blog->date}}">
+                      <input type="date" name="date" class="form-control" id="exampleInputUsername1" value="{{$blog->date}}" required>
+                      @error ('date')
+            <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
                     </div>
                     
                     <div class="form-group">
                       <label for="exampleInputEmail1">Description</label>
-                      <input type="text" name="blog_details" class="form-control" id="exampleInputEmail1" value="{{$blog->blog_details}}" placeholder="Description">
+                      <input type="text" name="blog_details" class="form-control" id="exampleInputEmail1" value="{{$blog->blog_details}}" placeholder="Description" required>
+                      @error ('blog_details')
+            <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
                     </div>
                     <!-- <div class="form-group">
                       <label for="exampleInputPassword1">Image</label>
@@ -58,7 +67,10 @@
                     </div> -->
                     <div class="form-group">
                       <label for="exampleInputPassword1">Add Link of the video</label>
-                      <input type="longtext" name="blog_video_link" class="form-control" value="{{$blog->blog_video_link}}" id="exampleInputPassword1" placeholder="Link">
+                      <input type="longtext" name="blog_video_link" class="form-control" value="{{$blog->blog_video_link}}" id="exampleInputPassword1" placeholder="Link" required>
+                      @error ('blog_video_link')
+            <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
                     </div>
                     <!-- <label class="form-check-label">Status</label> -->
                     <!-- <div class="row">

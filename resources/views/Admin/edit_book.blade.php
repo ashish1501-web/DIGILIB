@@ -38,19 +38,22 @@
                     @method('PUT')
                     <div class="form-group">
                       <label for="exampleInputUsername1">Name</label>
-                      <input type="text" name="book_name" class="form-control" id="exampleInputUsername1" value="{{$book->book_name}}" placeholder="Book Name">
+                      <input type="text" name="book_name" class="form-control" id="exampleInputUsername1" value="{{$book->book_name}}" placeholder="Book Name" required>
+                      @error ('book_name')
+            <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
                     </div>
                     <div class="form-group">
                       <label for="exampleInputauthor">Author</label>
-                      <input type="text"name="author_name" class="form-control" id="exampleInputEmail1" value="{{$book->author_name}}" placeholder="Author">
+                      <input type="text"name="author_name" class="form-control" id="exampleInputEmail1" value="{{$book->author_name}}" placeholder="Author" required>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputpublisher">Publication</label>
-                      <input type="text" name="publisher" class="form-control" id="exampleInputEmail1" value="{{$book->publisher}}" placeholder="Book Publisher">
+                      <input type="text" name="publisher" class="form-control" id="exampleInputEmail1" value="{{$book->publisher}}" placeholder="Book Publisher" required>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputdescription">Book Details</label>
-                      <input type="text" name="description" class="form-control" id="exampleInputEmail1" value="{{$book->description}}" placeholder="Details">
+                      <input type="text" name="description" class="form-control" id="exampleInputEmail1" value="{{$book->description}}" placeholder="Details" required>
                     </div>
                     <!-- <div class="form-group">
                       <label for="exampleInputimage">Image</label>
@@ -58,7 +61,7 @@
                     </div> -->
                     <div class="form-group">
                       <label for="exampleInputpages">Number of Pages</label>
-                      <input type="number" name="pages" class="form-control" id="exampleInputConfirmPassword1" value="{{$book->pages}}" placeholder="Pages">
+                      <input type="number" name="pages" class="form-control" id="exampleInputConfirmPassword1" value="{{$book->pages}}" placeholder="Pages" required>
                     </div>
                     
                     
@@ -67,7 +70,7 @@
                       <!-- <input type="text" name="category" class="form-control" id="exampleInputEmail1" placeholder="Category"> -->
                       <select name="category" value="{{$book->category}}" id="">
                           @foreach($cat as $c)
-                            <option value="{{$c->id}}">{{$c->category_name}}</option>
+                            <option  value="{{$c->id}}"> {{$c->category_name}}</option>
                           @endforeach
                       </select>
                       

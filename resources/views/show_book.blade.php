@@ -66,29 +66,9 @@
         </table>
         <hr>
     </div>
-    <div class="container">
-        <form action="{{route('add_comments',['id'=>$book->id])}}" method="post">
-            @csrf
-            <input type="hidden" name="userId" value="{{Auth::user()->id}}">
-            <input type="hidden" name="bookId" value="{{$book->id}}">
-            Comment:<input type="longtext" name="comment">
-           <button type="submit" name="submit" value="2" >Submit</button>
-        </form>
-    </div>
+    
 
-    <div class="container">
-        @foreach($comments as $c)
-
-            <div>
-                <h2>
-                    @if($c->bookId==$book->id)
-                    {{$c->comment}}
-                    @endif
-                </h2>
-            </div>
-
-        @endforeach
-    </div>
+    
     <div class="morebooks">
         <p>More books from the same category:</p>
         <div class="books-slider">
@@ -110,6 +90,46 @@
         </div>
                 </div>
             </div>
+    </div>
+<br><br><br> 
+    <div style="margin-left:10vw;" class="container-fluid">
+        <form action="{{route('add_comments',['id'=>$book->id])}}" method="post">
+            @csrf
+            <input type="hidden" name="userId" value="{{Auth::user()->id}}">
+            <input type="hidden" name="bookId" value="{{$book->id}}">
+            <div>
+                <h2>Comments</h2>
+            </div>
+            <textarea name="comment" class="data" cols="100" rows="6" required></textarea>
+            <div>
+            <button style="width:200px;" type="submit" name="submit" value="2" > <h3>Submit</h3></button>
+
+            </div>
+        </form>
+    </div>
+<br><br><br>
+
+    <div style="margin-left:10vw;" class="container-fluid">
+        @foreach($comments as $c)
+
+            <div>
+                
+                    @if($c->bookId==$book->id)
+                     <b style="font-size:25px;">"{{$c->comment}}" </b>
+                    @foreach($users as $u)
+                        @if($u->id==$c->userId)
+                         <i style="font-size:15px;"> -- {{$u->userName}}</i>
+                        @endif
+                    
+                    @endforeach
+                    <br><br>
+                    @endif
+
+
+                
+            </div>
+
+        @endforeach
     </div>
 
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>

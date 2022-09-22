@@ -83,7 +83,7 @@ header{
 
 .adiv .dropdown:hover .dropdown-menu {
     display: block;
-    margin-top: 5%;
+    margin-top: -15%;
 }
 
 .adiv .drp-dwn{
@@ -1233,14 +1233,14 @@ text-align: center;
     }
 }
 
-/* .row {
+.row {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
-} */
+}
 
 .column {
     position: relative;

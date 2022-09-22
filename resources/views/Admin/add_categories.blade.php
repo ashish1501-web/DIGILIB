@@ -15,11 +15,17 @@
                     @csrf
                     <div class="form-group">
                       <label for="exampleInputcatname">Name</label>
-                      <input type="text" name="category_name" class="form-control" id="exampleInputUsername1" placeholder="Category Name">
+                      <input type="text" name="category_name" class="form-control" id="exampleInputUsername1" placeholder="Category Name" required>
+                      @error ('category_name')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Description</label>
-                      <input type="text" name="category_details" class="form-control" id="exampleInputEmail1" placeholder="Description">
+                      <input type="text" name="category_details" class="form-control" id="exampleInputEmail1" placeholder="Description" required>
+                      @error ('category_details')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
                     </div>
                     <!-- <label class="form-check-label">Status</label>
                     <div class="row">

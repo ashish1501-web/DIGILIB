@@ -19,7 +19,7 @@
                           <th>User Name</th>
                           <th>User Email</th>
                           <th>Phone_Number</th>
-                          <th>Role</th>
+                          <!-- <th>Role</th> -->
                           <th>Registered_on</th>
                           
                           <th>Edit</th>
@@ -34,11 +34,11 @@
                           <td>{{$book->email}}</td>
                           <td>{{$book->phoneNumber}}</td>
                           
-                          @if($book->role=='1')
+                          <!-- @if($book->role=='1')
                           <td>"User"</td>
                           @else
                           <td>"Admin"</td>
-                          @endif
+                          @endif -->
                           <td>{{$book->created_at}}</td>
                          
                           

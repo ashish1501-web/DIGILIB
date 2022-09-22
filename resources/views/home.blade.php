@@ -106,22 +106,13 @@
     <div id="popular-books" class="books-slider">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-            <div class="swiper-slide"><a href="./books/Pythonbook.pdf"><img src="{{asset('assets/images/img1.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img19.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img80.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img69.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img55.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img31.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img94.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img9.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img74.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img50.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img24.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img77.jfif')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img101.web')}}p" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img66.webp')}}" alt=""></a></div>
-            <div class="swiper-slide"><a href=""><img src="{{asset('assets/images/img33.webp')}}" alt=""></a></div>
-            </div>
+            @foreach($books as $book)
+                 @foreach($fav as $b)
+                    @if($book->id==$b->bookId)
+                    <div class="swiper-slide"><a style="height:390px;" href="{{route('book.show',['id'=>$book->id])}}"><img style="margin:30px; width:200px; height:250px;" width="20px" height="30px" src="{{asset('storage/uploads/books/'.$book->book_image)}}" alt="">{{$book->book_name}}</a></div>
+                    @endif
+                @endforeach
+            @endforeach   
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>
@@ -212,7 +203,7 @@
 
     <script>
         var swiper = new Swiper(".mySwiper", {
-          slidesPerView: 5,
+          slidesPerView: 6,
           spaceBetween: 10,
           slidesPerGroup: 4,
           navigation: {

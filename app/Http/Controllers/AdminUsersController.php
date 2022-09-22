@@ -40,14 +40,15 @@ class AdminUsersController extends Controller
        ]);
        
       // dd($user);
-      $student=User::all();
+      $student=User::orderBy('id','DESC')->get();
         return view('Admin.user_details',compact('student'));
     }
     public function delete($id){
      
         $data=User::find($id);
+        // return $data;
         $data->delete();
-        $student=User::all();
+        $student=User::orderBy('id','DESC')->get();
         
         return view('Admin.user_details',compact('student'));
     }

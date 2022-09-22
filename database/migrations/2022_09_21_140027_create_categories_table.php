@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('category_name');
-            $table->string('category_details');
-            $table->enum('status',['active','inactive'])->default('active');
-
-            // $table->timestamps();
+           
+$table->string('category_name');
+$table->string('category_details');
+$table->enum('status',['active','inactive'])->default('active');
+            $table->timestamps();
         });
     }
 

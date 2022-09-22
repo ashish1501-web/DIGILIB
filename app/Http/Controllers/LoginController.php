@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
-
+use App\Models\Book;
+use App\Models\favourite;
 use Auth;
 
 class LoginController extends Controller
@@ -31,8 +33,11 @@ class LoginController extends Controller
     // reidrect to user dashboard
     public function dashboard()
     {   
-        //  dd(Auth::user());
-        return view('home');
+        $user=auth()->user();
+        $books=Book::all();
+        $fav=favourite::select('bookId')->distinct()->where('userId','=',$user->id)->get();
+
+        return view('home',compact('books','fav'));
     }
 
     // Logout user

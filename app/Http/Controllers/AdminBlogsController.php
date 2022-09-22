@@ -56,7 +56,7 @@ class AdminBlogsController extends Controller
      
         $data=Blog::find($id);
         $data->delete();
-        $blogs=Blog::all();
+        $blogs=Blog::orderBy('id','DESC')->get();
         
         return view('Admin.blog_details',compact('blogs'));
     }
@@ -88,7 +88,7 @@ class AdminBlogsController extends Controller
     ]);
        
       // dd($user);
-      $blogs=Blog::all();
+      $blogs=Blog::orderBy('id','DESC')->get();
         return view('Admin.blog_details',compact('blogs'));
     }
 }

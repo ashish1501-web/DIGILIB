@@ -110,7 +110,8 @@
             <div id="contact-info">
                 <div id="contact-txt">Contact</div>
                 <div class="contact-form">
-                    <form role="form">
+                    <form role="form" onsubmit="myfunc()">
+                        @csrf
                         <div class="form-group">
                             <label for="name" class="contact-details"><span class="content-name">Name</span></label>
                             <input type="text" class="form-control data inp" placeholder="Enter Your Name Here" required>
@@ -128,7 +129,7 @@
                             <textarea class="data" cols="46" rows="6" required></textarea>
                         </div>
                         <div class="form-submit">
-                            <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                            <button type="submit" id="" class="btn btn-success btn-lg">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -179,7 +180,11 @@
     </div>
 
     
-
+<script>
+    function myfunc(){
+        alert("Message sent");
+    }
+</script>
     @include('layouts.footer')
 </body>
 </html>

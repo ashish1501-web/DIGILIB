@@ -9,7 +9,7 @@ class BlogsController extends Controller
 {
     public function index()
     {
-        $blogs=Blog::all();
+        $blogs=Blog::orderBy('id','DESC')->get();
         return view('blog',compact('blogs'));
     }
     public function show()
